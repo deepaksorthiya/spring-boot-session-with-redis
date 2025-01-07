@@ -14,22 +14,22 @@ public class RedisSessionListener {
 
     @EventListener
     public void processSessionCreatedEvent(SessionCreatedEvent event) {
-        log.info("Session created: {}", event);
+        log.debug("Session created: {}", event);
     }
 
     @EventListener
     public void processSessionDeletedEvent(SessionDeletedEvent event) {
-        log.info("Session deleted: {}", event);
+        log.debug("Session deleted: {}", event);
     }
 
     @EventListener
     public void processSessionDestroyedEvent(SessionDestroyedEvent event) {
-        log.info("Session destroy: {}", event);
+        log.debug("Session destroy: {}", event);
     }
 
     @EventListener
     public void processSessionExpiredEvent(SessionExpiredEvent event) {
-        log.info("Session expired: {}", event);
+        log.debug("Session expired: {}", event);
     }
 
 }
