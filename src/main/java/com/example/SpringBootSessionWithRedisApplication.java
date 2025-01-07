@@ -14,7 +14,7 @@ public class SpringBootSessionWithRedisApplication {
         SpringApplication.run(SpringBootSessionWithRedisApplication.class, args);
     }
 
-    // config for secure environment
+    // config for secure redis environment where admin right not available or SET command not working
     @Bean
     public ConfigureRedisAction configureRedisAction() {
         return ConfigureRedisAction.NO_OP;
