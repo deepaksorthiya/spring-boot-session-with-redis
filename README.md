@@ -8,36 +8,36 @@
 
 # Getting Started
 
-### Requirements:
+## Requirements:
 
 ```
-Git: 2.47.1
-Spring Boot: 3.4.1
+Git: 2.49.0
+Spring Boot: 3.4.5
 Maven: 3.9+
-Java: 17
-Docker Desktop: Tested on 4.37.1
+Java: 21
+Docker Desktop: Tested on 4.41.0
 ```
 
-### Clone this repository:
+## Clone this repository:
 
 ```bash
 git clone https://github.com/deepaksorthiya/spring-boot-session-with-redis.git
 cd spring-boot-session-with-redis
 ```
 
-### Build Project:
+## Build Project:
 
 ```bash
-./mvnw clean package
+./mvnw clean package -DskipTests
 ```
 
-### Start Docker:
+## Start Docker:
 
 ```bash
 docker compose up
 ```
 
-### Run Project:
+## Run Project:
 
 ```bash
 ./mvnw spring-boot:run
@@ -69,13 +69,13 @@ docker build -t deepaksorthiya/spring-boot-session-with-redis:0.0.1-SNAPSHOT .
 docker run --name spring-boot-session-with-redis -p 8080:8080 deepaksorthiya/spring-boot-session-with-redis:0.0.1-SNAPSHOT
 ```
 
-### Testing
+## Testing
 
 http://localhost:8080<br>
 username: user</br>
 password: password</br>
 
-### Reference Documentation
+## Reference Documentation
 
 For further reference, please consider the following sections:
 
@@ -89,7 +89,7 @@ For further reference, please consider the following sections:
 * [Spring Data Redis (Access+Driver)](https://docs.spring.io/spring-boot/reference/data/nosql.html#data.nosql.redis)
 * [Thymeleaf](https://docs.spring.io/spring-boot/reference/web/servlet.html#web.servlet.spring-mvc.template-engines)
 
-### Guides
+## Guides
 
 The following guides illustrate how to use some features concretely:
 
@@ -102,11 +102,3 @@ The following guides illustrate how to use some features concretely:
 * [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 * [Messaging with Redis](https://spring.io/guides/gs/messaging-redis/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
-
-### Maven Parent overrides
-
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.

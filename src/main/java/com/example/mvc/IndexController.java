@@ -1,15 +1,18 @@
 package com.example.mvc;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.MediaType;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.security.Principal;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -36,6 +39,22 @@ public class IndexController {
         }
 
         return "redirect:/";
+    }
+
+    @GetMapping(value = "/server-info", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Map<String, String> getRequestInfo(@RequestHeader Map<String, String> httpHeaders, HttpServletRequest httpServletRequest) {
+        httpHeaders.put("remoteHost", httpServletRequest.getRemoteHost());
+        httpHeaders.put("localAddress", httpServletRequest.getLocalAddr());
+        try {
+            InetAddress localHost = InetAddress.getLocalHost();
+            httpHeaders.put("hostName", localHost.getHostName());
+            httpHeaders.put("hostAddress", localHost.getHostAddress());
+            httpHeaders.put("canonicalHostName", localHost.getCanonicalHostName());
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+        return httpHeaders;
     }
 
 }

@@ -10,8 +10,12 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
-  # Enable version updates for Github Action
+      time: "23:59"
+      timezone: "Asia/Calcutta"
+  # Enable version updates for GitHub Action
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+      time: "23:59"
+      timezone: "Asia/Calcutta"
