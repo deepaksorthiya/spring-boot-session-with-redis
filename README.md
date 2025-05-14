@@ -75,6 +75,9 @@ http://localhost:8080<br>
 username: user</br>
 password: password</br>
 
+http://localhost:8080/actuator/sessions?username=user
+http://localhost:8080/actuator/auditevents?principal=user
+
 ## Reference Documentation
 
 For further reference, please consider the following sections:

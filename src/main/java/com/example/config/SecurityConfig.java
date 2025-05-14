@@ -1,6 +1,8 @@
 package com.example.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.audit.AuditEventRepository;
+import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -44,6 +46,15 @@ public class SecurityConfig<S extends Session> {
     @Bean
     public SpringSessionBackedSessionRegistry<S> sessionRegistry() {
         return new SpringSessionBackedSessionRegistry<>(this.sessionRepository);
+    }
+
+    /**
+     * required to expose actuator/auditevents endpoint
+     * check other request param in @see org.springframework.boot.actuate.audit.AuditEventsEndpoint
+     */
+    @Bean
+    public AuditEventRepository auditEventRepository() {
+        return new InMemoryAuditEventRepository();
     }
 
 }
